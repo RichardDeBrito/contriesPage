@@ -1,0 +1,72 @@
+# Descrição do Projeto
+
+Uma aplicação web interativa para explorar informações culturais, geográficas e políticas de países ao redor do mundo.
+
+##  Funcionalidades
+
+-  **Busca por nome**: Encontre países digitando seu nome
+-  **Filtro por continente**: Filtre países por África, Américas, Ásia, Europa ou Oceania
+-  **Informações detalhadas**: Visualize bandeira, capital, população, área, idiomas, moedas e mais
+-  **Sistema de favoritos**: Salve seus países favoritos usando localStorage
+-  **Integração com mapas**: Links diretos para Google Maps
+-  **Design responsivo**: Interface adaptável para mobile, tablet e desktop
+-  **Tratamento de erros**: Mensagens claras em caso de problemas
+
+##  Tecnologias
+
+- **JavaScript** 
+- **HTML**
+- **Css**
+
+##  Design System
+
+O projeto utiliza um design system completo com:
+- Cores semânticas definidas em variáveis CSS
+- Sombras suaves e transições elegantes
+- Mobile-first
+
+## API Utilizada
+
+**REST Countries API**  
+URL: https://restcountries.com/  
+Autenticação: Nenhuma (acesso direto)
+
+Fornece dados completos sobre todos os países incluindo:
+- Informações geográficas
+- Dados populacionais
+- Idiomas e moedas
+- Bandeiras e brasões
+- Fronteiras e mapas
+- E muito mais
+
+##  Equipe de Desenvolvimento
+
+- [Cristian Tavares]
+- [Enzo Falcão]
+- [Richard Costa]
+- [Victor Emanoel]
+
+##  Requisitos Atendidos
+
+### Funcionais 
+- [x] Campo de busca por nome do país
+- [x] Filtro por continente
+- [x] Listagem com nome, bandeira, capital, região e população
+- [x] Página de detalhes completa
+- [x] Sistema de favoritos com localStorage
+- [x] Tratamento de erros
+- [x] Spinner de carregamento
+- [x] Página "Sobre"
+- [x] Rodapé com nomes da equipe
+
+### Não Funcionais 
+- [x] HTML5 semântico
+- [x] Design responsivo (mobile-first)
+- [x] Código modular e reutilizável
+- [x] Boas práticas de UX/UI
+- [x] Tratamento robusto de exceções
+- [x] Versionamento com Git
+
+##  Licença
+
+Projeto acadêmico desenvolvido para fins educacionais.

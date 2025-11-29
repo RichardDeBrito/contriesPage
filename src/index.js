@@ -3,7 +3,8 @@ import { createCardsContries } from "./createCards.js";
 import { captureTotalContries } from "./utils.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
-    createCardsContries(await apiRoutes.captureNamesContries(), await apiRoutes.captureRegionContries(), await apiRoutes.captureCapitalContries(), await apiRoutes.capturePopulationContries(), await apiRoutes.captureImageContrie());
+    createCardsContries(await apiRoutes.captureNamesContries(), await apiRoutes.captureRegionContries(), 
+    await apiRoutes.captureCapitalContries(), await apiRoutes.capturePopulationContries(), await apiRoutes.captureImageContrie());
     captureTotalContries();
 });
 
@@ -17,7 +18,9 @@ input.addEventListener("input", async () => {
 
     containerContries.innerHTML = '';
 
-    createCardsContries(await apiRoutes.captureNamesContries(nameContrie, 1), await apiRoutes.captureRegionContries(nameContrie, 1), await apiRoutes.captureCapitalContries(nameContrie, 1), await apiRoutes.capturePopulationContries(nameContrie, 1), await apiRoutes.captureImageContrie(nameContrie, 1));
+    createCardsContries(await apiRoutes.captureNamesContries(nameContrie, 1), await apiRoutes.captureRegionContries(nameContrie, 1),
+     await apiRoutes.captureCapitalContries(nameContrie, 1), await apiRoutes.capturePopulationContries(nameContrie, 1), 
+     await apiRoutes.captureImageContrie(nameContrie, 1));
 
 });
 
@@ -68,9 +71,12 @@ for (let continentBox of listContinentBox) {
         }
 
         if (continentTraslate === 'nada') {
-            createCardsContries(await apiRoutes.captureNamesContries(0), await apiRoutes.captureRegionContries(0), await apiRoutes.captureCapitalContries(0), await apiRoutes.capturePopulationContries(0), await apiRoutes.captureImageContrie(0));    
+            createCardsContries(await apiRoutes.captureNamesContries(0), await apiRoutes.captureRegionContries(0), 
+            await apiRoutes.captureCapitalContries(0), await apiRoutes.capturePopulationContries(0), await apiRoutes.captureImageContrie(0));    
         } else {
-            createCardsContries(await apiRoutes.captureNamesContries('A', 3, continentTraslate), await apiRoutes.captureRegionContries('A', 3, continentTraslate), await apiRoutes.captureCapitalContries('A', 3, continentTraslate), await apiRoutes.capturePopulationContries('A', 3, continentTraslate), await apiRoutes.captureImageContrie('A', 3, continentTraslate));
+            createCardsContries(await apiRoutes.captureNamesContries('A', 3, continentTraslate), 
+            await apiRoutes.captureRegionContries('A', 3, continentTraslate), await apiRoutes.captureCapitalContries('A', 3, continentTraslate), 
+            await apiRoutes.capturePopulationContries('A', 3, continentTraslate), await apiRoutes.captureImageContrie('A', 3, continentTraslate));
         }
     }); 
 }
