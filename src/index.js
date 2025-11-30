@@ -1,6 +1,6 @@
 import { apiRoutes } from "./api.js";
 import { createCardsContries } from "./createPages.js";
-import { captureTotalContries, inputSearch } from "./utils.js";
+import { captureTotalContries, inputSearch, filterByRegion } from "./utils.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
     const listNamesContries = await apiRoutes.captureNamesContries();
@@ -12,5 +12,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     createCardsContries(listNamesContries,listCapitalContries,listRegionContries,listPopulationCOntries, listImageContrie);
     captureTotalContries();
     inputSearch();
-
+    filterByRegion();
 });
