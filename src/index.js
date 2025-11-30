@@ -1,5 +1,6 @@
 import { apiRoutes } from "./api.js";
 import { createCardsContries } from "./createPages.js";
+import { captureTotalContries } from "./utils.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
     const listNamesContries = await apiRoutes.captureNamesContries();
@@ -9,4 +10,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     const listImageContrie = await apiRoutes.captureImageContrie();
     
     createCardsContries(listNamesContries,listRegionContries, listCapitalContries,listPopulationCOntries, listImageContrie);
+    captureTotalContries();
 });

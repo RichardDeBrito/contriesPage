@@ -58,9 +58,105 @@ export async function createCardsContries(nameList, capitalList, regionList, pop
 
                 localStorage.setItem('selectContrie', JSON.stringify(data[0]));
                 window.location.href = "./../public/detailsPage.html";
+                
             } catch(error) {
                 console.error('Error ao buscar dados do país', error);
             };
         });
+    };
+};
+
+export async function createDetailsPage(name, officialName, flags, capital, population, area, region, languages, currencies, internetDomain, borders){
+    const containerMain = document.getElementById('container-main');
+
+    const flag = document.createElement('div');
+    flag.classList.add('flag');
+    flag.classList.add('flag-contrie');
+    const imgFlag = document.createElement('img');
+    imgFlag.src = flags;
+    flag.appendChild(imgFlag);
+
+    const infoContries = document.createElement('div');
+    infoContries.classList.add('div-info');
+    infoContries.setAttribute('id', 'geral-info');
+    const infoTitle = document.createElement('div');
+    infoTitle.classList.add('info-title');
+    const nameContrie = document.createElement('h1');
+    nameContrie.innerHTML = name;
+    const nameContrieOfficial = document.createElement('p');
+    nameContrieOfficial.innerHTML = officialName;
+    const containerMoreInfo = document.createElement('div');
+    containerMoreInfo.classList.add('container-more-info');
+    
+    const infoNames = ['Capital', 'Região', 'População', 'Área'];
+    const infoValues = [capital, region, population, area];
+
+    for(let i = 0; i < 4; i++) {
+        let boxInfo = document.createElement('div');
+        boxInfo.classList.add('box-info');
+        let nameInfo = document.createElement('p');
+        nameInfo.classList.add('name-info');
+        nameInfo.innerHTML = infoNames[i];
+        let valueInfo = document.createElement('p');
+        valueInfo.classList.add('value-info');
+        valueInfo.innerHTML = infoValues[i];
+
+        boxInfo.appendChild(nameInfo);
+        boxInfo.appendChild(valueInfo);
+
+        containerMoreInfo.appendChild(boxInfo);
+    }
+
+    infoTitle.appendChild(nameContrie);
+    infoTitle.appendChild(nameContrieOfficial);
+
+    infoContries.appendChild(infoTitle);
+    infoContries.appendChild(containerMoreInfo);
+
+    const principalDiv = document.createElement('div');
+    principalDiv.setAttribute('id', 'principalDiv');
+    principalDiv.appendChild(flag);
+    principalDiv.appendChild(infoContries);
+    containerMain.appendChild(principalDiv);
+
+
+    const listTitleInfosOne = ['Idiomas', 'Moedas', 'Domínios de Internet', 'Países na Fronteira'];
+    const valuesInfoOne = [languages, currencies, internetDomain, borders];
+    const secundaryDiv = document.createElement('div');
+    secundaryDiv.setAttribute('id', 'secundary-div');
+
+    for(let i = 0; i < 4; i++) {
+        
+        if(valuesInfoOne[i] === undefined) {
+            console.log('Esse país não faz fronteira com nenhum outro.');
+
+        } else {
+            const divOneInfo = document.createElement('div');
+            divOneInfo.classList.add('div-info');
+            divOneInfo.classList.add('div-one-info');
+
+            const titleOneInfo = document.createElement('div');
+            titleOneInfo.classList.add('title-one-info');
+            const textTitleOneInfo = document.createElement('h3');
+            textTitleOneInfo.innerHTML = listTitleInfosOne[i];
+            textTitleOneInfo.appendChild(textTitleOneInfo);
+
+            const valueOneInfo = document.createElement('div');
+            const textValueOneInfo = document.createElement('p');
+
+            if(i === 0 || i === 2) {
+                textValueOneInfo.classList.add('language');
+            }
+
+            textValueOneInfo.innerHTML = valuesInfoOne[i];
+            valueOneInfo.appendChild(textValueOneInfo);
+
+            divOneInfo.appendChild(titleOneInfo);
+            divOneInfo.appendChild(valueOneInfo);
+
+            secundaryDiv.appendChild(divOneInfo);
+
+            containerMain.appendChild(secundaryDiv);
+        };
     };
 };
