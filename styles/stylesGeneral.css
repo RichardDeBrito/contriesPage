@@ -54,6 +54,10 @@ nav a {
   border-radius: 5px;
 }
 
+nav a:hover {
+  background-color: rgba(172, 255, 47, 0.5);
+}
+
 nav ul {
   list-style: none;
   display: flex;
@@ -110,7 +114,7 @@ nav ul {
   padding-bottom: 20px;
 }
 
-.container-info-card {
+.container-infos-card {
   display: flex;
   flex-direction: column;
   color: var(--text-secundary-color);
@@ -119,6 +123,7 @@ nav ul {
 .contrie-card {
   background-color: var(--principal-color);
   border: 1px solid var(--border-color);
+  border-radius: 10px;
   padding: 0px;
   margin-bottom: 20px;
   min-width: 250px;

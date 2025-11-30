@@ -31,9 +31,9 @@ export class apiRoutes {
         };
     }
 
-    static async seachForContinent(continent) {
+    static async seachForRegion(region) {
         try {
-            const response = await fetch(`${this.baseURL}region/${continent}?fields=name,capital,currencies,flags,region,population`);
+            const response = await fetch(`${this.baseURL}region/${region}?fields=name,capital,currencies,flags,region,population`);
             const data = await response.json();
 
             return data;
@@ -65,15 +65,14 @@ export class apiRoutes {
                 contriesList = await this.searchForName(name);
             } else {
                 contriesList = await this.seachForContinent(continent);
-            }
+            };
 
             const contriesNameList = [];
-
     
             for (let i = 0; i < contriesList.length; i++) {
                 contriesNameList.push(contriesList[i].name.common);
             };
-    
+            
             return contriesNameList;
             
         } catch (error) {
