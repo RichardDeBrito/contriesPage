@@ -158,3 +158,22 @@ export function filterByRegion() {
         });
     };
 };
+
+export function favoriteButton(contrie) {
+    const favoriteButton = document.getElementById('favorite-contrie');
+
+    favoriteButton.addEventListener('click', () => {
+        let favorites = JSON.parse(localStorage.getItem('favorite-countries')) || [];
+
+        const exists = favorites.some(
+            (item) => item.name.common === contrie.name.common
+        );
+
+        if (!exists) {
+            favorites.push(contrie);
+            localStorage.setItem('favorite-countries', JSON.stringify(favorites));
+        } else {
+            console.log('Esse país já está nos favoritos!');
+        };
+    });
+};

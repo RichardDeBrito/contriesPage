@@ -1,5 +1,5 @@
 import { createDetailsPage } from "./createPages.js";
-import { captureCurrencies, captureLanguages, captureBorders, captureDomains } from "./utils.js";
+import { captureCurrencies, captureLanguages, captureBorders, captureDomains, favoriteButton } from "./utils.js";
 
 const contrie = JSON.parse(localStorage.getItem("selectContrie"));
 
@@ -32,4 +32,5 @@ iframe.src = mapsLink;
 
 document.addEventListener('DOMContentLoaded', () => {
     createDetailsPage(name, nameOfficial, flag, capital, population, area, region, languageText, currenciesText, domainsText, borderValues);
+    favoriteButton(contrie);
 });
