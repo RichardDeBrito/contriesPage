@@ -19,7 +19,7 @@ export class apiRoutes {
         }
     }
 
-    static async searchForName(name = 'A') {
+    static async searchByName(name = 'A') {
         try {
             const response = await fetch(`${this.baseURL}name/${name}?fields=name,capital,currencies,flags,region,population`);
             const data = await response.json();
@@ -31,7 +31,7 @@ export class apiRoutes {
         };
     }
 
-    static async seachForRegion(region) {
+    static async searchByRegion(region) {
         try {
             const response = await fetch(`${this.baseURL}region/${region}?fields=name,capital,currencies,flags,region,population`);
             const data = await response.json();
@@ -43,7 +43,7 @@ export class apiRoutes {
         };
     }
 
-    static async seachForCompleteName(name = 'A') {
+    static async searchByCompleteName(name) {
         try {
             const response = await fetch(`${this.baseURL}name/${name}?fields=name,capital,currencies,flags,region,population,tld,borders,area,languages,subregion,latlng,maps`);
             const data = await response.json(); 
@@ -55,16 +55,16 @@ export class apiRoutes {
         }
     }
 
-    static async captureNamesContries(name = 'A', optionSearch = 0, continent = 'Americas') {
+    static async captureNamesContries(name = 'A', optionSearch = 0, region = 'Americas') {
         try {
             let contriesList = [];
 
             if (optionSearch === 0 || name === "") {
                 contriesList = await this.searchAllContries();
             } else if(optionSearch === 1) {
-                contriesList = await this.searchForName(name);
+                contriesList = await this.searchByName(name);
             } else {
-                contriesList = await this.seachForContinent(continent);
+                contriesList = await this.searchByRegion(region);
             };
 
             const contriesNameList = [];
@@ -80,7 +80,7 @@ export class apiRoutes {
         }
     }
 
-    static async captureRegionContries(name = 'A', optionSearch = 0, continent = 'Americas') {
+    static async captureRegionContries(name = 'A', optionSearch = 0, region = 'Americas') {
         try {
             let contriesList = [];
             const contriesRegionsList = [];
@@ -88,9 +88,9 @@ export class apiRoutes {
             if (optionSearch === 0 || name === "") {
                 contriesList = await this.searchAllContries();
             } else if(optionSearch === 1) {
-                contriesList = await this.searchForName(name);
+                contriesList = await this.searchByName(name);
             } else {
-                contriesList = await this.seachForContinent(continent);
+                contriesList = await this.searchByRegion(region);
             }
     
             for (let i = 0; i < contriesList.length; i++) {
@@ -104,16 +104,16 @@ export class apiRoutes {
         }
     }
 
-    static async captureCapitalContries(name = 'A', optionSearch = 0, continent = 'Americas') {
+    static async captureCapitalContries(name = 'A', optionSearch = 0, region = 'Americas') {
         try {
             let contriesList = [];
 
             if (optionSearch === 0 || name === "") {
                 contriesList = await this.searchAllContries();
             } else if(optionSearch === 1){
-                contriesList = await this.searchForName(name);
+                contriesList = await this.searchByName(name);
             } else {
-                contriesList = await this.seachForContinent(continent);
+                contriesList = await this.searchByRegion(region);
             }
 
             const contriesCapitalsList = [];
@@ -129,16 +129,16 @@ export class apiRoutes {
         }
     }
 
-    static async capturePopulationContries(name = 'A', optionSearch = 0, continent = 'Americas') {
+    static async capturePopulationContries(name = 'A', optionSearch = 0, region = 'Americas') {
         try {
             let contriesList = [];
 
             if (optionSearch === 0 || name === "") {
                 contriesList = await this.searchAllContries();
             } else if(optionSearch === 1){
-                contriesList = await this.searchForName(name);
+                contriesList = await this.searchByName(name);
             } else {
-                contriesList = await this.seachForContinent(continent);    
+                contriesList = await this.searchByRegion(region);    
             }
 
             const contriesPopulationList = [];
@@ -154,16 +154,16 @@ export class apiRoutes {
         }
     }
 
-    static async captureImageContrie(name = 'A', optionSearch = 0, continent = 'Americas') {
+    static async captureImageContrie(name = 'A', optionSearch = 0, region = 'Americas') {
         try {
             let contriesList = [];
 
             if (optionSearch === 0 || name === "") {
                 contriesList = await this.searchAllContries();
             } else if(optionSearch === 1){
-                contriesList = await this.searchForName(name);
+                contriesList = await this.searchByName(name);
             } else {
-                contriesList = await this.seachForContinent(continent);
+                contriesList = await this.searchByRegion(region);
             };
 
             const contriesFlagsList = [];

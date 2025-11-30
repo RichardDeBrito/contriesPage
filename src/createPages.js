@@ -1,6 +1,6 @@
 import { apiRoutes } from "./api.js";
 
-export async function createCardsContries(nameList, capitalList, regionList, populationList, imgList) {
+export async function createCardsContries(nameList, capitalList, regionList, populationList, imgList, contriesList = null) {
 
     const containerContries = document.getElementById('container-contries');
     containerContries.innerHTML = '';
@@ -11,6 +11,7 @@ export async function createCardsContries(nameList, capitalList, regionList, pop
         contrieCard.classList.add('contrie-card');
         contrieCard.setAttribute('id', `${i}`);
         contrieCard.setAttribute('data-name', nameList[i]);
+        contrieCard.setAttribute('data-index', `${i}`);
 
         const imgCard = document.createElement('img');
         const src = imgList[i].png;
@@ -46,21 +47,25 @@ export async function createCardsContries(nameList, capitalList, regionList, pop
         contrieCard.addEventListener('click', async (event) => {
             if(event && typeof event.preventDefault === 'function') event.preventDefault();
 
+            const idx = parseInt(contrieCard.getAttribute('data-index'), 10);
+
+            if(contriesList && contriesList[idx]) {
+                localStorage.setItem('selectContrie', JSON.stringify(contriesList[idx]));
+                window.location.href = "./../public/detailsPage.html";
+                return;
+            }
+
             const nameContrie = contrieCard.getAttribute('data-name');
-
             try {
-                const data = await apiRoutes.seachForCompleteName(nameContrie);
-
-                if (!data || data.length === 0) {
+                const data = await apiRoutes.searchByCompleteName(nameContrie);
+                if(!data || data.length === 0) {
                     console.error('País não encontrado:', nameContrie);
                     return;
                 }
-
                 localStorage.setItem('selectContrie', JSON.stringify(data[0]));
                 window.location.href = "./../public/detailsPage.html";
-
             } catch(error) {
-                console.error('Error ao buscar dados do país', error);
+                console.error('Erro ao buscar dados do país', error);
             };
         });
     };

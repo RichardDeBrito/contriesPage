@@ -1,4 +1,5 @@
 import { apiRoutes } from "./api.js";
+import { createCardsContries } from "./createPages.js";
 
 export async function captureTotalContries(name, optionSearch = 0, region) {
     let contriesList = [];
@@ -6,9 +7,9 @@ export async function captureTotalContries(name, optionSearch = 0, region) {
     if(optionSearch === 0 || name === "") {
         contriesList = await apiRoutes.searchAllContries();
     } else if(optionSearch === 1) {
-        contriesList = await apiRoutes.searchForName(name);
+        contriesList = await apiRoutes.searchByName(name);
     } else {
-        contriesList = await apiRoutes.seachForRegion(region);
+        contriesList = await apiRoutes.searchByRegion(region);
     };
 
     const totalContriesText = document.getElementById('contries-total-text');
@@ -74,4 +75,26 @@ export function captureDomains(domains) {
     };
 
     return domainsStr;
+};
+
+export function inputSearch() {
+    const searchInput = document.getElementById('search-input');
+
+    searchInput.addEventListener("input", async () => {
+        const nameContrie = searchInput.value;
+
+        const containerContries = document.getElementById('container-contries');
+        captureTotalContries(nameContrie, 1);
+
+        containerContries.innerHTML = '';
+
+        const listNamesContries = await apiRoutes.captureNamesContries(nameContrie, 1);
+        const listCapitalsContries = await apiRoutes.captureCapitalContries(nameContrie, 1);
+        const listRegionsContries = await apiRoutes.captureRegionContries(nameContrie, 1);
+        const listPopulationContries = await apiRoutes.capturePopulationContries(nameContrie, 1);
+        const listImageContrie = await apiRoutes.captureImageContrie(nameContrie, 1);
+        const listContriesAll = await apiRoutes.searchByCompleteName(nameContrie, 1);
+
+        createCardsContries(listNamesContries, listCapitalsContries,listRegionsContries, listPopulationContries,listImageContrie, listContriesAll);
+    });
 };
